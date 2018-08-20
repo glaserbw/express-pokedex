@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
 		res.render('pokemon/index', {pokemon: pokemon});
 	}).catch(function(err){
 		console.log('oops', err); 
-		res.send('No DICE!');
+		res.render('404');
 	});
 });
 
@@ -35,7 +35,7 @@ router.post('/', function(req, res){
 router.get('/:id', function(req, res){
 	db.pokemon.findById(req.params.id).then(function(foundPokemon){
 		var pokemonName = foundPokemon.name + "/";
-		pokemonName = pokemonName.toLowerCase();
+		// pokemonName = pokemonName.toLowerCase();
 		console.log("pokemon name is", pokemonName);
 		var pokemonUrl = 'http://pokeapi.co/api/v2/pokemon/' + pokemonName;
 
